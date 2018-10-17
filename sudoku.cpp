@@ -69,3 +69,36 @@ void display_board(const char board[9][9]) {
 }
 
 /* add your functions here */
+
+// function to check if a board is complete or not
+bool is_complete(const char board [9][9]){
+  for (int r=0;r<9;r++){
+    for (int c=0;c<9;c++){
+      if (board[r][c]=='.'){
+	  return false;
+	}
+    }
+  }
+  return true;
+}
+
+bool make_move(const char position[2], char digit, char board [9][9]){
+
+  if (strlen(position)>2){
+    return false;
+  }
+  
+  int  row, col;
+  row = static_cast<int>(position[0]);
+  col = static_cast<int>(position[1]);
+
+  // checks to see if row is within A-I (both lower and upper case) and col within 1-9
+  if ((row >= 65 && row <= 73)||(row >= 97 && row <= 105)){
+    if(col >= 49 && col <= 57){
+      return true;
+    }} else{
+    return false;
+  }
+  return false;
+}
+							   
