@@ -1,1 +1,14 @@
-Summarise your findings here (see specification).
+The solve_board function works by placing the lowest permissible number in the first empty cell it encounters before recursively calling itself and thereby moving to the next empty cell and so forth. If it reaches a cell in which no numbers are permissible, it goes back to each previous cell in turn to increment the number until it can proceed with a permissible number. This is a brute force approach and may not necessarily be the most efficient approach to the problem as it makes a very large number of moves which it then has to backtrack until a solution is found. The number of moves it makes is a function of the number of possible permutations that are permissible (i.e. a proxy for the difficulty of the grid as a whole). Thus, placing a counter to count how many times a call is made to the make_move function will give an idea of the difficulty of the grid. I used this approach to identify the descriptions of the mystery boards, which are as follows:
+
+Mystery1: hard (439,378 calls to make_move)
+Mystery2: impossible
+Mystery3: extremely hard (465,043 calls to make_move)
+
+However, this is not a comprehensive solution to the problem. Getting the initial digits correct drastically reduces the number of permutations the function has to go through. And due to the low number bias in the solve_board function (starting with 1 and going through to 9), it is possible that Mystery3 may actually be easier by some other measures but is detrimented by this function due to the order of its numbers. Therefore it is worth reversing the "for loop" in the solve_board function to go from 9 to 1 instead to see how much it changes the number of calls to make_move. The results are as follows:
+
+Mystery1: hard (28,149 calls to make_move)
+Mystery3: extremely hard (56,140 calls to make_move)
+
+As you can see, this drastically reduces the number of calls to make_move for both Mystery1 and Mystery3 but does not change their difficulty rankings. Therefore, we can (fairly) safely say that Mystery 3 is harder than Mystery1.
+
+
