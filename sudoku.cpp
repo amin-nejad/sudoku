@@ -21,6 +21,7 @@ int move_count = 0;
 /* pre-supplied function to load a Sudoku board from a file */
 void load_board(const char* filename, char board[9][9]) {
 
+  move_count=0;
   cout << "Loading Sudoku board from file '" << filename << "'... ";
 
   ifstream in(filename);
@@ -244,6 +245,7 @@ bool solve_board(char board[9][9]){
 
   if (is_complete(board)){
     cout << "The number of times a move is made is: "<< move_count << endl;
+    move_count = 0;
   return true;
   }
 
@@ -257,7 +259,7 @@ bool solve_board(char board[9][9]){
   }
   
   // enters the lowest permissible digit in the first empty cell before calling itself recursively 
-  for (digit = '1'; digit <= '9'; digit++){ 
+  for (digit = '9'; digit >= '1'; digit--){ 
     if (make_move_quick(row, col, digit, board)){
       move_count++;
       if (solve_board(board)){
@@ -267,6 +269,7 @@ bool solve_board(char board[9][9]){
       }
     }
   }
+
   return false;
 }
 

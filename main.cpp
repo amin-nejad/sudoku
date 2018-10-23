@@ -124,15 +124,15 @@ int main() {
   cout << endl;
 
   cout << "=================== Question 5 ===================" << endl << endl;
-
-    load_board("mystery1.dat", board);
+  
+  load_board("mystery1.dat", board);
   if (solve_board(board)) {
     cout << "The 'mystery1' board has a solution:" << endl;
     display_board(board);
   } else 
     cout << "A solution cannot be found." << endl;
   cout << endl;
-
+  
   load_board("mystery2.dat", board);
   if (solve_board(board)) {
     cout << "The 'mystery2' board has a solution:" << endl;
